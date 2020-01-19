@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+    <title>Primefaces</title>
+</h:head>
+
+<h:body>
+
+    <style type="text/css">
+        body .ui-progressbar .ui-progressbar-value {
+            height: 0 !important;
+        }
+    </style>
+
+    <p:dialog id="dialogoBarraProgresso" modal="true" draggable="false" closable="false" resizable="false"
+              showHeader="false" widgetVar="dialogoBarraProgresso" width="300px">
+        <p:outputLabel id="textoBarra" value="Carregando... (Aguarde)" style="font-weight: bold !important;"/>
+        <p:progressBar id="progressBarIndeterminate" mode="indeterminate"/>
+    </p:dialog>
+
+    <h:form>
+        <p:commandButton style="width: 100% !important;" value="For Infinito" process="@this" update="@this" action="#{testeBean.forInfinito()}"
+                         onstart="PF('dialogoBarraProgresso').show()" oncomplete="PF('dialogoBarraProgresso').hide()"/>
+    </h:form>
+
+</h:body>
+
+</html>
